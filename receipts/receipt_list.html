@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt List Page</title>
+    <link rel="stylesheet" href="receipt_list_styles.css">
+</head>
+<body >
+    <h1 class = "school-name">${school.name}</h1>
+    <h2>Receipts</h3>
+    <table style="width:100%">
+      <tr>
+        <th>Reference</th>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Class</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+      % if receipts:
+       % for receipt in receipts:
+       <tr>
+        <td>${receipt.reference_number}</td>
+        <td>${receipt.student.last_name} ${receipt.student.first_name}</td>
+        <td>${receipt.created}</td>
+        <td>${receipt.student.classroom.name}</td>
+        <td>${receipt.amount_school_received}</td>
+        <td>${ "Full" if receipt.is_full_payment else "Part" }</td>
+       </tr>
+       % endfor
+      % endif 
+    </table>
+</body >
+</html>

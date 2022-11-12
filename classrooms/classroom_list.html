@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom List Page</title>
+    <link rel="stylesheet" href="classroom_list_styles.css">
+</head>
+<body >
+    <h1 class = "school-name">${school.name}</h1>
+    <h2>Classrooms</h3>
+    <table style="width:100%">
+      <tr>
+        <th>Class Name</th>
+        <th>Teacher</th>
+        <th>No of Students</th>
+      </tr>
+    % if classrooms
+       % for classroom in classrooms
+       <tr>
+        <td>${classroom.name}</td>
+        <td>${classroom.teacher}</td>
+        <td>${classroom.students.count}</td>
+       </tr>
+       %endfor
+    % endif
+    </table>
+</body >
+</html>

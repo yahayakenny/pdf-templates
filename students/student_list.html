@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student List Page</title>
+    <link rel="stylesheet" href="student_list_styles.css">
+</head>
+<body >
+    <h1 class = "school-name">${school.name}</h1>
+    <h2>Students</h3>
+    <table style="width:100%">
+      <tr>
+        <th>Tellerbase ID</th>
+        <th>School ID</th>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Gender</th>
+        <th>Status</th>
+      </tr>
+    % if students:
+       % for student in students:
+       <tr>
+        <td>${student.identification_number}</td>
+        <td>${student.school_identification_number}</td>
+        <td>${student.student.last_name} ${student.student.first_name}</td>
+        <td>${student.student.classroom.name}</td>
+        <td>${student.gender}</td>
+        <td>${ "Full" if student.is_full_payment else "Part" }</td>
+       </tr>
+       %endfor
+    % endif
+    </table>
+</body >
+</html>

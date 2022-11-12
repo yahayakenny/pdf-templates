@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tellerbase ID List Page</title>
+    <link rel="stylesheet" href="tellerbase_id_styles.css" />
+  </head>
+  <body>
+    <h1 class="school-name">${classroom.name}</h1>
+    <table style="width: 100%">
+      <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Tellerbase ID</th>
+        <th>Payment Link</th>
+      </tr>
+      % if students: % for student in students:
+      <tr>
+        <td>${student.school_identification_number}</td>
+        <td>${student.student.last_name} ${student.student.first_name}</td>
+        <td>${student.identification_number}</td>
+        <td>${students.payment_link}</td>
+      </tr>
+      %endfor % endif
+    </table>
+  </body>
+</html>

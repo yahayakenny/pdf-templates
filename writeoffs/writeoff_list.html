@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Writeoff List Page</title>
+    <link rel="stylesheet" href="writeoff_list_styles.css">
+</head>
+<body >
+    <h1 class = "school-name">${school.name}</h1>
+    <h2>Writeoffs</h3>
+    <table style="width:100%">
+      <tr>
+        <th>Date</th>
+        <th>Ref. No</th>
+        <th>Student Name</th>
+        <th>Fee</th>
+        <th>Amount</th>
+        <th>Requested By</th>
+      </tr>
+    % if writeoffs:
+       % for writeoff in writeoffs:
+       <tr>
+        <td>${writeoff.created}</td>
+        <td>${writeoff.reference_number}</td>
+        <td>${writeoff.student.last_name} ${writeoff.student.first_name}</td>
+        <td>${writeoff.fee.title}</td>
+        <td>${writeoff.amount}</td>
+        <td>${writeoff.requester.last_name} ${writeoff.requester.first_name}</td>
+       </tr>
+       %endfor
+    % endif
+    </table>
+</body >
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Withdrawal List Page</title>
+    <link rel="stylesheet" href="withdrawal_list_styles.css">
+</head>
+<body >
+    <h1 class = "school-name">${school.name}</h1>
+    <h2>Withdrawals</h3>
+    <table style="width:100%">
+      <tr>
+        <th>Reference</th>
+        <th>Bank</th>
+        <th>Account</th>
+        <th>Date</th>
+        <th>Amount</th>
+        <th>Status</th>
+      </tr>
+    % if withdrawals:
+       % for withdrawal in withdrawals:
+       <tr>
+        <td>${withdrawal.reference_number}</td>
+        <td>${withdrawal.bank_account.bank_name}</td>
+        <td>${withdrawal.bank_account.account_name}</td>
+        <td>${withdrawal.created}</td>
+        <td>${withdrawal.amount}</td>
+        <td>${withdrawal.status}</td>
+       </tr>
+       %endfor
+    % endif
+    </table>
+</body >
+</html>
