@@ -14,7 +14,7 @@ body {
 .classroom-detail-container {
   display: grid;
   grid-template-columns: auto auto auto;
-  padding: 10 0px;
+  padding: 5 0px;
 }
 
 table {
@@ -27,4 +27,11 @@ th {
   text-align: left;
   padding: 8px 0px;
   color: gray;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-right: 50px
 }

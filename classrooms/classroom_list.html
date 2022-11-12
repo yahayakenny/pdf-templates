@@ -5,20 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classroom List Page</title>
-    <link rel="stylesheet" href="classroom_list_styles.css">
+    <style>
+       <%include file="classroom_list_styles.css"/> 
+    </style> 
 </head>
 <body >
     <h1 class = "school-name">${school.name}</h1>
+    <div class = "header">
+      <h2>${classroom.name}</h2>
+      <h3 >Printed on: ${}</h3>
+    </div>
     <h2>Classrooms</h3>
     <table style="width:100%">
       <tr>
+        <th>#</th>
         <th>Class Name</th>
         <th>Teacher</th>
         <th>No of Students</th>
       </tr>
     % if classrooms
-       % for classroom in classrooms
+      % for count, classroom in enumerate(classrooms, start = 1): 
        <tr>
+        <td>${count}</td>
         <td>${classroom.name}</td>
         <td>${classroom.teacher}</td>
         <td>${classroom.students.count}</td>

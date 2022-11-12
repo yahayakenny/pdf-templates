@@ -21,3 +21,10 @@ th {
   padding: 8px 0px;
   color: gray;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-right: 50px
+}

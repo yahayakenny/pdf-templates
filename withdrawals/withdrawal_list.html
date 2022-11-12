@@ -5,13 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Withdrawal List Page</title>
-    <link rel="stylesheet" href="withdrawal_list_styles.css">
+    <style>
+      <%include file="withdrawal_list_styles.css"/>
+    </style>
+    <!-- <link rel="stylesheet" href="withdrawal_list_styles.css"> -->
+
 </head>
 <body >
     <h1 class = "school-name">${school.name}</h1>
-    <h2>Withdrawals</h3>
+    <div class = "header">
+      <h2>Withdrawals</h2>
+      <h3>Printed on: ${}</h3>
+    </div>
     <table style="width:100%">
       <tr>
+        <th>#</th>
         <th>Reference</th>
         <th>Bank</th>
         <th>Account</th>
@@ -20,8 +28,9 @@
         <th>Status</th>
       </tr>
     % if withdrawals:
-       % for withdrawal in withdrawals:
+       % for count, withdrawal in enumerate(withdrawals, start = 1):
        <tr>
+        <td>${count}</td>
         <td>${withdrawal.reference_number}</td>
         <td>${withdrawal.bank_account.bank_name}</td>
         <td>${withdrawal.bank_account.account_name}</td>

@@ -5,13 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receipt List Page</title>
-    <link rel="stylesheet" href="receipt_list_styles.css">
+    <style>
+      <%include file="receipt_list_styles.css"/>
+    </style>
+    <!-- <link rel="stylesheet" href="receipt_list_styles.css"> -->
 </head>
 <body >
     <h1 class = "school-name">${school.name}</h1>
-    <h2>Receipts</h3>
+     <div class = "header">
+      <h2>Receipts</h3>
+      <h3 >Printed on: ${}</h3>
+    </div>
     <table style="width:100%">
       <tr>
+        <th>#</th>
         <th>Reference</th>
         <th>Name</th>
         <th>Date</th>
@@ -20,15 +27,16 @@
         <th>Status</th>
       </tr>
       % if receipts:
-       % for receipt in receipts:
-       <tr>
-        <td>${receipt.reference_number}</td>
-        <td>${receipt.student.last_name} ${receipt.student.first_name}</td>
-        <td>${receipt.created}</td>
-        <td>${receipt.student.classroom.name}</td>
-        <td>${receipt.amount_school_received}</td>
-        <td>${ "Full" if receipt.is_full_payment else "Part" }</td>
-       </tr>
+        % for count, receipt in enumerate(receipts, start = 1):
+        <tr>
+          <td>${count}</td>
+          <td>${receipt.reference_number}</td>
+          <td>${receipt.student.last_name} ${receipt.student.first_name}</td>
+          <td>${receipt.created}</td>
+          <td>${receipt.student.classroom.name}</td>
+          <td>${receipt.amount_school_received}</td>
+          <td>${ "Full" if receipt.is_full_payment else "Part" }</td>
+        </tr>
        % endfor
       % endif 
     </table>

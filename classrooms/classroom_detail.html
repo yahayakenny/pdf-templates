@@ -5,10 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classroom Detail Page</title>
-    <link rel="stylesheet" href="classroom_detail_styles.css">
+    <style>
+      <%include file="classroom_detail_styles.css"/>
+    </style>
+  
 </head>
 <body >
   <h1 class = "school-name">${school.name}</h1>
+  <div class = "header">
+    <h2>${classroom.name}</h2>
+    <h3>Printed on: ${}</h3>
+  </div>
     <div class = "classroom-detail-container">
       <div>
         <p>Class: ${name}</p>
@@ -22,22 +29,23 @@
         <p> Owing: ${}</p>
       </div>
     </div>
-
     <h2>Current Fees</h3>
     <table style="width:100%">
       <tr>
+        <th>#</th>
         <th>Fee Type</th>
         <th>Description</th>
         <th>Amount</th>
         <th>Outstanding</th>
       </tr>
       % if fees:
-        % for fee in fees:
+        % for count, fee in enumerate(fees, start = 1):
         <tr>
-        <td>${"Mandatory" if receipt.is_mandatory else "Optional" }</td>
-        <td>${fee.title}</td>
-        <td>${fee.amount}</td>
-        <td>${fee.owing}</td>
+          <td>${count}</td>
+          <td>${"Mandatory" if receipt.is_mandatory else "Optional" }</td>
+          <td>${fee.title}</td>
+          <td>${fee.amount}</td>
+          <td>${fee.owing}</td>
         </tr>
         % endfor
       % endif 
@@ -46,6 +54,7 @@
     <h2>Students</h3>
       <table style="width:100%">
         <tr>
+          <th>#</th>
           <th>Tellerbase ID</th>
           <th>School ID</th>
           <th>Name</th>
@@ -53,8 +62,9 @@
           <th>Status</th>
         </tr>
       % if students:
-         % for student in students:
+        % for count, student in enumerate(students, start = 1):
          <tr>
+          <td>${count}</td>
           <td>${student.identification_number}</td>
           <td>${student.school_identification_number}</td>
           <td>${student.student.last_name} ${student.student.first_name}</td>
